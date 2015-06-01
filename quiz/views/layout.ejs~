@@ -3,7 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<title>Pregunta</title>
-	<link rel="stylesheet" href="/stylesheets/style.css" />
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+	<link rel="stylesheet" type="text/css" media="only screen and (min-width:530px) and (min-device-width:481px)" href="/stylesheets/wide.css" />
+	<link rel="stylesheet" type="text/css" media="only screen and (max-width:480px)" href="/stylesheets/smartphone.css" />
+
 </head>
 
 <body>
@@ -14,6 +17,7 @@
 		<nav class="main" id="n1" role="navigation">
 			<span><a href="/">Inicio</a></span>
 			<span><a href="/quizes/question">Preguntas</a></span>
+			<span><a href="/author">Autor</a></span>
 		</nav>
 		<section class="main" id="s1">
 			<%- body %>
@@ -21,6 +25,7 @@
 
 		<footer class="main" id="f1">
 			<a href="http://es.wikipedia.org/wiki/Quiz">¿Que es un Quiz?</a>
+			<p><a href="https://github.com/PacoJM/quiz-2015-paco">Enlace Github</a></p>
 		</footer>
 	</div>
 </body>
