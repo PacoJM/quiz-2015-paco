@@ -1,5 +1,0 @@
-<p>
-		<p><%= respuesta %></p>
-		<a href="/quizes/question">Volder</a>
-
-</p>
