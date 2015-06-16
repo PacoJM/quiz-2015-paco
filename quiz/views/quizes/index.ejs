@@ -11,6 +11,9 @@
 	<tr>
 	<td>Categoría: <%= quizes[i].tema %></td>
 	<td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
+
+	<%if(session.user){%>
+
 	<td><a href="quizes/<%=quizes[i].id %>/edit" ><button>Editar</button></a></td>
 
 	<td>
@@ -19,6 +22,7 @@
 
 	</form>
 	</td>
+	 <%}%>
 	</tr>
 <% } %>
 </table>
