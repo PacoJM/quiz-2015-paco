@@ -44,6 +44,12 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(function (req, res, next) {
+  var tiempo = 120000;
+  req.session.cookie.expires = new Date(Date.now() + tiempo);
+  next();
+});
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler
@@ -78,6 +84,8 @@ app.use(function(err, req, res, next) {
         errors: []
     });
 });
+
+
 
 
 module.exports = app;
