@@ -15,6 +15,7 @@ exports.index= function(req, res){
     		statistics.n_comentarios=count;
     		statistics.promedio_comentarios=statistics.n_comentarios/statistics.n_preguntas;
     		models.Comment.count({distinct: '"QuizId"'}).then(function(count){
+                if(count==null){count=0;}
                 statistics.preg_con_com = count;
                 statistics.preg_sin_com = statistics.n_preguntas-count;
                 res.render('quizes/statistics/index.ejs', {statistics: statistics, errors: []});
@@ -22,7 +23,7 @@ exports.index= function(req, res){
             
     	});
     	
-    });
+    }).catch(function(error){next(error);});
 
     
 };
