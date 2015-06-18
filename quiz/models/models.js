@@ -30,6 +30,7 @@ Quiz.hasMany(Comment);
 
 exports.Quiz = Quiz;
 exports.Comment = Comment;
+exports.sequelize = sequelize;
 
 sequelize.sync().then(function (){
 	Quiz.count().then(function(count){

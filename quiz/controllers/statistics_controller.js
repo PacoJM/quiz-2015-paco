@@ -14,10 +14,11 @@ exports.index= function(req, res){
     	models.Comment.count().then(function(count){
     		statistics.n_comentarios=count;
     		statistics.promedio_comentarios=statistics.n_comentarios/statistics.n_preguntas;
-    		models.Comment.count({distinct: "'QuizId'"}).then(function(count){
+    		models.sequelize.query('SELECT count(*) AS n FROM "Quizzes" WHERE "id" IN (SELECT DISTINCT "QuizId" FROM "Comments")').then(function(count){
                 if(count==null){count=0;}
-                statistics.preg_con_com = count;
-                statistics.preg_sin_com = statistics.n_preguntas-count;
+
+                statistics.preg_con_com = count[0].n;
+                statistics.preg_sin_com = statistics.n_preguntas-count[0].n;
                 res.render('quizes/statistics/index.ejs', {statistics: statistics, errors: []});
             });
             
