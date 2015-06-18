@@ -14,7 +14,12 @@ exports.index= function(req, res){
     	models.Comment.count().then(function(count){
     		statistics.n_comentarios=count;
     		statistics.promedio_comentarios=statistics.n_comentarios/statistics.n_preguntas;
-    		res.render('quizes/statistics/index.ejs', {statistics: statistics, errors: []});
+    		models.Comment.count({distinct: 'QuizId'}).then(function(count){
+                statistics.preg_con_com = count;
+                statistics.preg_sin_com = n_preguntas-count;
+                res.render('quizes/statistics/index.ejs', {statistics: statistics, errors: []});
+            });
+            
     	});
     	
     });
